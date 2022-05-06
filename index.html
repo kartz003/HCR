@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>smart board</title>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        header {
+            background-color: #2fe8e8;
+            margin-bottom: 3rem;
+        }
+
+        .title {
+            font-size: 2.3rem;
+            font-weight: 500;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .button,
+        #file-upload {
+            font-family: inherit;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            outline: none;
+            color: #ffffff;
+            background-color: rgb(0, 120, 212);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2px;
+            font-size: 1rem;
+            min-width: 6rem;
+        }
+
+        .button:hover {
+            background-color: rgb(5, 43, 75);
+        }
+
+        .panel {
+            margin-left: 2rem
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <header>
+            <h3 class="title"> Character Recognition</h3>
+        </header>
+
+        <div class="panel">
+            <form action="/" , method="POST" , enctype=multipart/form-data>
+                <input id="file-upload" type="file" name="file" accept="image/x-png,image/gif,image/jpeg" required/>
+
+                <input type="submit" value="Submit" class="button"/>
+
+                <div id="upload-caption">click above to select image </div>
+                <br />
+
+                {% if prediction %}
+                <img src="{{url_for('static', filename=filename)}}" height="350px" width="400px"> 
+                {% endif %}
+                 
+                <!--
+                <div style="margin-bottom: 2rem;">
+                    <input type="submit" value="Submit" class="button" />
+                </div>  
+                -->              
+
+                {% if prediction %}
+                <h2> Your Prediction   : {{prediction}} </h2>
+                {% endif %}
+                
+            </form>
+        </div>
+    </main>
+</body>
+</html>
